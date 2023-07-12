@@ -9,9 +9,15 @@
             <h1>{{ $project->name }}</h1>
         </div>
         <p>{{ $project->description }}</p>
-        <div>
+        <div class="d-flex gap-2">
             <a href="{{ route("admin.projects.edit", $project) }}" class="btn btn-primary">Edit</a>
-            <a href="{{ route("admin.projects.destroy", $project) }}" class="btn btn-danger">Delete</a>
+            <form action="{{ route('admin.projects.destroy', $project)}}" method="post">
+                @csrf
+    
+                @method("DELETE")
+    
+                <input class="form-control btn btn-danger" type="submit" value="Delete">
+            </form>
         </div>
     </div>
 </div>
